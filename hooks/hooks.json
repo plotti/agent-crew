@@ -1,0 +1,30 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/router-guard.sh\"",
+            "timeout": 10,
+            "statusMessage": "Crew-Wächter prüft, wer hier schreibt..."
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/board.sh\" --brief",
+            "timeout": 10,
+            "statusMessage": "Crew: Board-Stand"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-crew",
+  "description": "Crew statt Schwarm: ein Router-Agent zerlegt eine Aufgabe in Tickets, Arbeiter bauen sie, geprüft wird mit der Prüfanleitung, die vor der Arbeit geschrieben wurde.",
+  "owner": {
+    "name": "Thomas Ebermann",
+    "url": "https://github.com/plotti"
+  },
+  "plugins": [
+    {
+      "name": "agent-crew",
+      "source": "./",
+      "description": "Router-Vertrag, Ticket-Protokoll, Board, Arbeiter-Subagent, Watchdog und ein Wächter, der den Router am Schreiben von Feature-Code hindert.",
+      "category": "productivity"
+    }
+  ]
+}

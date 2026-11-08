@@ -1,0 +1,12 @@
+{
+  "name": "agent-crew",
+  "displayName": "Agent Crew",
+  "description": "Ein Router-Agent schreibt Tickets, Arbeiter bauen sie, jedes Ticket trägt seine eigene Prüfanleitung. Crew statt Schwarm, in Claude Code.",
+  "author": {
+    "name": "Thomas Ebermann",
+    "url": "https://github.com/plotti"
+  },
+  "homepage": "https://github.com/plotti/agent-crew",
+  "repository": "https://github.com/plotti/agent-crew",
+  "keywords": ["agents", "multi-agent", "crew", "router", "tickets", "orchestration"]
+}
