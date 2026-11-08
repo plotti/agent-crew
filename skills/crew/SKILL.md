@@ -1,5 +1,6 @@
 ---
 name: crew
+argument-hint: "[pfad/zur/AUFGABE.md] [projekt-pfad]"
 description: >
   Router-Vertrag für eine Agenten-Crew in Claude Code: Der Router schreibt kein Feature-Code, sondern
   zerlegt die Aufgabe in Tickets mit rd.md (was zu tun ist) und eval.md (wie es geprüft wird), führt ein
@@ -76,6 +77,10 @@ Die Crew braucht beides schriftlich: eine Aufgabendatei (`AUFGABE.md`) mit numme
 Arbeitspaketen und eine Abnahmedatei (`ABNAHME.md`) mit prüfbaren Kriterien. Ohne Abnahmedatei
 schreibst du aus der Aufgabe selbst 10–20 Kriterien und legst sie dem Captain vor, **bevor** du
 Arbeiter startest.
+
+Fehlt eine Angabe — Projektpfad, Branch, Aufgabendatei —, frag den Captain danach. Aber nur, was
+nicht ohnehin aus dem Arbeitsverzeichnis hervorgeht: nach dem Pfad zu fragen, in dem du gerade
+stehst, ist Zeitverschwendung.
 
 ## Watchdog
 

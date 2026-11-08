@@ -44,9 +44,8 @@ Router Kriterien aus der Aufgabe ab und legt sie dir vor, **bevor** er Arbeiter 
 
 | Teil | Datei | Zweck |
 |---|---|---|
-| Router-Vertrag | `skills/crew/SKILL.md` | Der eigentliche Inhalt: Ablauf, Regeln, Rollen |
+| Router-Vertrag und Start | `skills/crew/SKILL.md` | Der eigentliche Inhalt: Ablauf, Regeln, Rollen. Einstiegspunkt: `/agent-crew:crew AUFGABE.md` |
 | Arbeiter | `agents/worker.md` | Ein-Ticket-Arbeiter: Branch `wk/<name>`, kein Merge, Meldung mit Messwerten |
-| Start | `commands/crew.md` | `/agent-crew:crew` |
 | Stand | `commands/board.md`, `scripts/board.sh` | Board, Branch-Alter, hängende Kandidaten |
 | Wächter | `hooks/router-guard.sh` | Blockiert den Router, wenn er ausserhalb von `.crew/` schreiben will |
 | Watchdog | `scripts/watchdog.sh` | Alle 10 Minuten ein Bericht an den Router |
