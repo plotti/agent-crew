@@ -8,5 +8,6 @@
   },
   "homepage": "https://github.com/plotti/agent-crew",
   "repository": "https://github.com/plotti/agent-crew",
+  "license": "MIT",
   "keywords": ["agents", "multi-agent", "crew", "router", "tickets", "orchestration"]
 }

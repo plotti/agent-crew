@@ -3,10 +3,11 @@
 Ein Router-Agent, der eine grössere Aufgabe in Tickets zerlegt, je Ticket einen Arbeiter startet und
 erst mergt, wenn die Prüfung grün ist – **die Prüfung, die vor der Arbeit geschrieben wurde**.
 
-Das ist der Nachbau aus dem Blogpost *„Drei Agenten-Crews, eine Aufgabe“*
-(https://www.datapeople.ch/blog/2026-11-08-drei-agenten-crews/): Ein Router in Claude Code, der
-nichts selbst schreibt, Arbeiter als Subagenten, ein Board, ein Watchdog – nachgebaut nach dem
-Muster, das DeepSeek in seinem Super-Agenten-Prototyp zeigt.
+Das ist der Nachbau aus dem Blogpost **[Drei Agenten-Crews, eine
+Aufgabe](https://www.datapeople.ch/blog/2026-11-08-drei-agenten-crews/)**: Ein Router in Claude Code,
+der nichts selbst schreibt, Arbeiter als Subagenten, ein Board, ein Watchdog – nachgebaut nach dem
+Muster, das DeepSeek in seinem Super-Agenten-Prototyp zeigt. Dort bauen drei verschiedene Systeme
+dieselbe App; dieses Plugin ist der dritte Kandidat, zum Nachbauen.
 
 ## Installation
 
@@ -51,6 +52,23 @@ Router Kriterien aus der Aufgabe ab und legt sie dir vor, **bevor** er Arbeiter 
 | Watchdog | `scripts/watchdog.sh` | Alle 10 Minuten ein Bericht an den Router |
 | Muster | `templates/` | `rd.md`, `eval.md`, `board.md` zum Ausfüllen |
 | Beispiel | `examples/` | Ein echter Lauf: 6 Tickets, Board, Prüfanleitungen (Freizeitkarte Schweiz) |
+
+## Beispiele
+
+In `examples/` liegt ein vollständiger, echter Lauf: 36 Excel-Dateien wurden zu einer Web-App mit
+17'776 Orten (Karte, Liste, Filter, Detailseiten), sechs Tickets in drei Wellen, 52 Minuten,
+1,03 Dollar. Die laufende App: [freizeitkarte-nachbau.fly.dev](https://freizeitkarte-nachbau.fly.dev/).
+
+Zum Nachbauen nimmt man es sich am besten in dieser Reihenfolge vor:
+
+1. `examples/freizeitkarte-board.md` – wie ein fertiges Board aussieht (Status, Wellen, Merge-Liste).
+2. `examples/freizeitkarte-tickets/karte/rd.md` und `…/karte/eval.md` – das Muster für ein Ticket:
+   verbindliche Schnittstelle, Datei-Eigentum, prüfbare Befehle mit Messwerten.
+3. `examples/freizeitkarte-tickets/daten/eval.md` – eine Prüfung, die Zahlen statt Meinungen liefert.
+4. `examples/freizeitkarte-tickets/qualitaet/eval.md` – die Schlussprüfung: frischer Klon, alle
+   Befehle von Hand, 21 Kriterien.
+
+Details in [examples/README.md](examples/README.md).
 
 ## Der Wächter
 
@@ -97,20 +115,32 @@ derselbe Lauf ein Vielfaches; für einen Prototyp ist das Modell zweitrangig, de
 Unterschied. Wichtig: `/cost` nur glauben, wenn das Modell bekannt ist – für fremde Modelle rechnet
 Claude Code mit Claude-Preisen.
 
-## Wenn du es weitergeben willst
+## Selbst weitergeben
 
-Diese Dateien als Repo auf GitHub legen (Name `agent-crew`, damit die beiden Befehle oben stimmen),
-dann reicht der Freundin / dem Freund:
+Das Repo ist gleichzeitig der Marketplace: mehr braucht es nicht, um es jemandem zu geben.
 
 ```
-/plugin marketplace add <dein-konto>/agent-crew
+/plugin marketplace add plotti/agent-crew
 /plugin install agent-crew@agent-crew
 ```
 
 Kein `version` im Plugin-Manifest heisst: Updates folgen dem Commit, `claude plugin update
 agent-crew@agent-crew` holt den neuen Stand. Setzt du eine `version`, musst du sie bei jedem Release
-erhöhen, sonst heisst es „already at the latest version“.
+erhöhen, sonst heisst es „already at the latest version“. Automatische Updates sind bei eigenen
+Marketplaces standardmässig aus (in `/plugin` → Marketplaces einschaltbar) – der Freund holt sich
+den neuen Stand also selbst.
+
+Ohne Marketplace, aus einem Klon: `claude --plugin-dir /pfad/zu/agent-crew` (eine Sitzung lang).
 
 Der Vertrag (`skills/crew/SKILL.md`) ist reiner Text und modell-unabhängig – er funktioniert auch
 ohne Plugin, wenn du die Datei in ein `~/.claude/skills/crew/` kopierst. Dann fehlen aber Wächter,
 Watchdog, Kommandos und die Arbeiter-Definition.
+
+Der Beitrag, aus dem das hier entstanden ist: **[Drei Agenten-Crews, eine
+Aufgabe](https://www.datapeople.ch/blog/2026-11-08-drei-agenten-crews/)** – FirstMate, DeepSeeks
+Super-Agent und dieser Nachbau auf derselben Aufgabe, mit Zeiten, Kosten und der Frage, was ein
+Arbeiter tut, wenn im Nachbarverzeichnis ein verwandtes Projekt liegt.
+
+## Lizenz
+
+MIT – siehe [LICENSE](LICENSE). Nimm es, bau damit, gib es weiter.
